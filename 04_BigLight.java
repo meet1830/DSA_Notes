@@ -30,7 +30,7 @@ Sample Output
 false
 */
 
-/*
+
 import java.util.Scanner;
 
 public class BigLight {
@@ -54,9 +54,9 @@ public class BigLight {
     sc.close();
   }
 }
-*/
 
-/*
+
+
 import java.util.Scanner;
 
 public class BigLight {
@@ -77,7 +77,8 @@ public class BigLight {
     sc.close();
   }
 }
-*/
+
+
 
 import java.util.*;
 

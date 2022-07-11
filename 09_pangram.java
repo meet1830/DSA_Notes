@@ -28,7 +28,7 @@ Explanation:
 The string lacks an x.
 */
 
-/*
+
 import java.util.*;
 
 public class A1_pangram {
@@ -52,11 +52,11 @@ public class A1_pangram {
     input.close();
   }
 }
-
-// Time Complexity: O(26*N) 
+// Time Complexity: O(26) 
 // Auxiliary Space: O(1)
-*/
 
+
+// O(N), O(N)
 import java.util.Scanner;
 
 public class A1_pangram {

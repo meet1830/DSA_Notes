@@ -20,6 +20,8 @@ Output:
 407
 
 Explanation: Here 3 given as input means we have to print all occuring armstrong numbers uptill 3 digit numbers that is uptill 999. 
+
+An Armstrong number of three digits is an integer such that the sum of the cubes of its digits is equal to the number itself.
 */
 
 import java.util.Scanner;
