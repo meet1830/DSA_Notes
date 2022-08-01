@@ -45,21 +45,7 @@ public int triangle(int rows) {
 }
 
 
-/* 4 - triangle
-We have triangle made of blocks. The topmost row has 1 block, the next row down has 2 blocks, the next row has 3 blocks, and so on. Compute recursively (no loops or multiplication) the total number of blocks in such a triangle with the given number of rows.
-triangle(0) → 0
-triangle(1) → 1
-triangle(2) → 3
-*/
-public int triangle(int rows) {
-  if (rows == 0) return 0;
-  else {
-    return rows + triangle(rows-1);
-  }
-}
-
-
-/* 5 - count7
+/* 4 - count7
 Given a non-negative int n, return the count of the occurrences of 7 as a digit, so for example 717 yields 2. (no loops).
 count7(717) → 2
 count7(7) → 1
@@ -81,7 +67,7 @@ public class Codingbat_Recursion_1 {
 }
 
 
-/* 6 - count8
+/* 5 - count8
 Given a non-negative int n, compute recursively (no loops) the count of the occurrences of 8 as a digit, except that an 8 with another 8 immediately to its left counts double, so 8818 yields 4.
 count8(8) → 1
 count8(818) → 2
@@ -108,7 +94,7 @@ public class Codingbat_Recursion_1 {
 }
 
 
-/* 7 - powerN  
+/* 6 - powerN  
 Given base and n that are both 1 or more, compute recursively (no loops) the value of base to the n power, so powerN(3, 2) is 9 (3 squared).
 powerN(3, 1) → 3
 powerN(3, 2) → 9
@@ -122,7 +108,7 @@ public int powerN(int base, int n) {
 }
 
 
-/* 8 - countX  
+/* 7 - countX  
 Given a string, compute recursively (no loops) the number of lowercase 'x' chars in the string.
 countX("xxhixx") → 4
 countX("xhixhix") → 3
@@ -140,7 +126,7 @@ public int countX(String str) {
 }
 
 
-/* 9 - countHi  
+/* 8 - countHi  
 Given a string, compute recursively (no loops) the number of times lowercase "hi" appears in the string.
 countHi("xxhixx") → 1
 countHi("xhixhix") → 2
@@ -157,7 +143,7 @@ public int countHi(String str) {
 }
 
 
-/* 10 - changeXY  
+/* 9 - changeXY  
 Given a string, compute recursively (no loops) a new string where all the lowercase 'x' chars have been changed to 'y' chars.
 changeXY("codex") → "codey"
 changeXY("xxhixx") → "yyhiyy"
@@ -174,7 +160,7 @@ public String changeXY(String str) {
 }
 
 
-/* 11 - changePi  
+/* 10 - changePi  
 Given a string, compute recursively (no loops) a new string where all appearances of "pi" have been replaced by "3.14".
 changePi("xpix") → "x3.14x"
 changePi("pipi") → "3.143.14"
@@ -192,7 +178,7 @@ public String changePi(String str) {
 }
 
 
-/* 12 - noX  
+/* 11 - noX  
 Given a string, compute recursively a new string where all the 'x' chars have been removed.
 noX("xaxb") → "ab"
 noX("abc") → "abc"
@@ -209,7 +195,7 @@ public String noX(String str) {
 }
 
 
-/* 13 - array6  
+/* 12 - array6  
 Given an array of ints, compute recursively if the array contains a 6. We'll use the convention of considering only the part of the array that begins at the given index. In this way, a recursive call can pass index+1 to move down the array. The initial call will pass in index as 0.
 array6([1, 6, 4], 0) → true
 array6([1, 4], 0) → false
@@ -226,7 +212,7 @@ public boolean array6(int[] nums, int index) {
 }
 
 
-/* 14 - array11  
+/* 13 - array11  
 Given an array of ints, compute recursively the number of times that the value 11 appears in the array. We'll use the convention of considering only the part of the array that begins at the given index. In this way, a recursive call can pass index+1 to move down the array. The initial call will pass in index as 0.
 array11([1, 2, 11], 0) → 1
 array11([11, 11], 0) → 2
@@ -243,7 +229,7 @@ public int array11(int[] nums, int index) {
 }
 
 
-/* 15 - array220  
+/* 14 - array220  
 Given an array of ints, compute recursively if the array contains somewhere a value followed in the array by that value times 10. We'll use the convention of considering only the part of the array that begins at the given index. In this way, a recursive call can pass index+1 to move down the array. The initial call will pass in index as 0.
 array220([1, 2, 20], 0) → true
 array220([3, 30], 0) → true
@@ -261,7 +247,7 @@ public boolean array220(int[] nums, int index) {
 }
 
 
-/* 16 - allStar  
+/* 15 - allStar  
 Given a string, compute recursively a new string where all the adjacent chars are now separated by a "*".
 allStar("hello") → "h*e*l*l*o"
 allStar("abc") → "a*b*c"
@@ -275,7 +261,7 @@ public String allStar(String str) {
 }
 
 
-/* 17 - pairStar  
+/* 16 - pairStar  
 Given a string, compute recursively a new string where identical chars that are adjacent in the original string are separated from each other by a "*".
 pairStar("hello") → "hel*lo"
 pairStar("xxyy") → "x*xy*y"
@@ -292,7 +278,7 @@ public String pairStar(String str) {
 }
 
 
-/* 18 - endX  
+/* 17 - endX  
 Given a string, compute recursively a new string where all the lowercase 'x' chars have been moved to the end of the string.
 endX("xxre") → "rexx"
 endX("xxhixx") → "hixxxx"
@@ -309,7 +295,7 @@ public String endX(String str) {
 }
 
 
-/* 19 - countPairs  
+/* 18 - countPairs  
 We'll say that a "pair" in a string is two instances of a char separated by a char. So "AxA" the A's make a pair. Pair's can overlap, so "AxAxA" contains 3 pairs -- 2 for A and 1 for x. Recursively compute the number of pairs in the given string.
 countPairs("axa") → 1
 countPairs("axax") → 2
@@ -326,7 +312,7 @@ public int countPairs(String str) {
 }
 
 
-/* 20 - countAbc  
+/* 19 - countAbc  
 Count recursively the total number of "abc" and "aba" substrings that appear in the given string.
 countAbc("abc") → 1
 countAbc("abcxxabc") → 2
@@ -346,7 +332,7 @@ public int countAbc(String str) {
 }
 
 
-/* 21 - count11  
+/* 20 - count11  
 Given a string, compute recursively (no loops) the number of "11" substrings in the string. The "11" substrings should not overlap.
 count11("11abc11") → 2
 count11("abc11x11x11") → 3
@@ -366,7 +352,7 @@ public int count11(String str) {
 }
 
 
-/* 22 - stringClean  
+/* 21 - stringClean  
 Given a string, return recursively a "cleaned" string where adjacent chars that are the same have been reduced to a single char. So "yyzzza" yields "yza".
 stringClean("yyzzza") → "yza"
 stringClean("abbbcdd") → "abcd"
@@ -385,7 +371,7 @@ public String stringClean(String str) {
 }
 
 
-/* 23 - countHi2  
+/* 22 - countHi2  
 Given a string, compute recursively the number of times lowercase "hi" appears in the string, however do not count "hi" that have an 'x' immedately before them.
 countHi2("ahixhi") → 1
 countHi2("ahibhi") → 2
@@ -407,7 +393,7 @@ public int countHi2(String str) {
 }
 
 
-/* 24 - parenBit  
+/* 23 - parenBit  
 Given a string that contains a single pair of parenthesis, compute recursively a new string made of only of the parenthesis and their contents, so "xyz(abc)123" yields "(abc)".
 parenBit("xyz(abc)123") → "(abc)"
 parenBit("x(hello)") → "(hello)"
@@ -435,7 +421,7 @@ public String parenBit(String str) {
 }
 
 
-/* 25 - nestParen  
+/* 24 - nestParen  
 Given a string, return true if it is a nesting of zero or more pairs of parenthesis, like "(())" or "((()))". Suggestion: check the first and last chars, and then recur on what's inside them.
 nestParen("(())") → true
 nestParen("((()))") → true
@@ -457,7 +443,7 @@ public boolean nestParen(String str) {
 }
 
 
-/* 26 - strCount  
+/* 25 - strCount  
 Given a string and a non-empty substring sub, compute recursively the number of times that sub appears in the string, without the sub strings overlapping.
 strCount("catcowcat", "cat") → 2
 strCount("catcowcat", "cow") → 1
@@ -478,7 +464,7 @@ public int strCount(String str, String sub) {
 }
 
 
-/* 27 - strCopies  
+/* 26 - strCopies  
 Given a string and a non-empty substring sub, compute recursively if at least n copies of sub appear in the string somewhere, possibly with overlapping. N will be non-negative.
 strCopies("catcowcat", "cat", 2) → true
 strCopies("catcowcat", "cow", 2) → false
@@ -505,7 +491,7 @@ public boolean strCopies(String str, String sub, int n) {
 }
 
 
-/* 28 - strDist  
+/* 27 - strDist  
 Given a string and a non-empty substring sub, compute recursively the largest substring which starts and ends with sub and return its length.
 strDist("catcowcat", "cat") → 9
 strDist("catcowcat", "cow") → 3
