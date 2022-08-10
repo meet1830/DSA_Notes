@@ -68,3 +68,41 @@ public class G2_Minimum_absolute_difference {
     input.close();
   }
 }
+
+
+// using prefix and suffix sum arrays, finding min difference between them
+// O(n), O(2n)
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    int n = input.nextInt();
+    int[] arr = new int[n];
+    for (int i = 0; i < n; i++) {
+      arr[i] = input.nextInt();
+    }
+
+    int[] prefixSum = new int[n];
+    int[] suffixSum = new int[n];
+    prefixSum[0] = arr[0];
+    suffixSum[n - 1] = arr[n - 1];
+      
+    int p = 1, s = n - 2;
+    while (p < n) {
+      prefixSum[p] = prefixSum[p - 1] + arr[p++];
+      suffixSum[s] = suffixSum[s + 1] + arr[s--];
+    }
+    
+    int min = Integer.MAX_VALUE, minIdx = -1;
+    for (int i = 0; i < n; i++) {
+        int temp = Math.abs(prefixSum[i] - suffixSum[i]);
+        if (temp < min) {
+            min = temp;
+            minIdx = i;
+        }
+    }
+      
+    System.out.println(minIdx + 1);
+  }
+}

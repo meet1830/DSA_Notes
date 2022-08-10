@@ -67,3 +67,29 @@ public class G1_Remove_zeroes {
 }
 
 //can use while loops instead of for loops
+
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    int test = input.nextInt();
+    while (test --> 0) {
+      String str = input.next();
+      int lo = 0, hi = str.length() - 1;
+      
+      while ((lo < str.length() && hi >= 0) && (str.charAt(lo) != '1' || str.charAt(hi) != '1')) {
+        lo++;
+        hi--;
+      }
+
+      int count = 0;
+      for (int i = lo; i <= hi; i++) {
+        if (str.charAt(i) == '0')
+          count++;
+      }
+
+      System.out.println(count);
+    }
+  }
+}

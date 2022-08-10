@@ -33,7 +33,7 @@ Explanation
 In the second sample guys need 2 · 10 = 20 units of data, so they have to wait 5 seconds and after that they will have 20 units before the second second ends. However, if guys wait 4 seconds, they will be able to watch first second of video without pauses, but they will download 18 units of data by the end of second second and it is less then necessary.
 */
 
-/*
+
 import java.util.*;
 import java.io.*;
 
@@ -48,7 +48,7 @@ public class G1_Let's_watch_football {
     System.out.println((int)speed);
   }
 }
-*/
+
 
 import java.util.Scanner;
 

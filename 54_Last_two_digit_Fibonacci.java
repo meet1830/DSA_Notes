@@ -36,10 +36,8 @@ public class G1_Last_two_digit_Fibonacci {
         start = first;
         first = next;
         count++;
-        // System.out.print("start = " + start + " ");
-        // System.out.print("first = " + first + " ");
-        // System.out.println("next = " + next + " ");
-      } else {
+      } 
+      else {
         next = start + first;
         start = first;
         first = next;
@@ -47,9 +45,6 @@ public class G1_Last_two_digit_Fibonacci {
         start %= 100;
         first %= 100;
         next %= 100;
-        // System.out.print("start = " + start + " ");
-        // System.out.print("first = " + first + " ");
-        // System.out.println("next = " + next + " ");
       }
     }
     if (next < 10) System.out.println("0" + next);
@@ -58,8 +53,8 @@ public class G1_Last_two_digit_Fibonacci {
   }
 }
 
-/*
-Program to find nth fibonacci term
+
+// Program to find nth fibonacci term
 
 
 import java.util.Scanner;
@@ -85,4 +80,3 @@ public class G1_Last_two_digit_Fibonacci {
         }
     }
 }
-*/

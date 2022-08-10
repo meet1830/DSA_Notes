@@ -35,12 +35,11 @@ public class G2_chocolate_distribution_problem {
     for (int i=0; i<n; i++) {
       arr[i] = input.nextInt();
     }
-    int diff[] = new int[n-s+1];
     Arrays.sort(arr);
+    int diff = Integer.MAX_VALUE;
     for(int i=0; i<=n-s; i++) {
-      diff[i] = arr[i+s-1] - arr[i];
+      diff = Math.min(diff, arr[i+s-1] - arr[i]);
     }
-    Arrays.sort(diff);
-    System.out.println(diff[0]);
+    System.out.println(diff);
   }
 }

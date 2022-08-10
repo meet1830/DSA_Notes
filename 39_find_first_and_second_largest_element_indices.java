@@ -3,39 +3,25 @@ Problem statement:
 Find indices of first and second largest element in array
 */
 
-// more efficient if want to find indices of first and second largest elements
-import java.util.Scanner;
-public class P1_find_first_and_second_largest_element_indices {
-    public static void main(String args[]) {
-        Scanner input = new Scanner(System.in);
-        int n = input.nextInt();
-        int max = Integer.MIN_VALUE, maxIndex = -1;
-        int[] arr = new int[n];
-        for (int i=0; i<n; i++) {
-            arr[i] = input.nextInt();
-            if (arr[i] > max) {
-                max = arr[i];
-                maxIndex = i;
+// if -> else if not written than will fail for testcase where array in descending order and x != max for duplicates
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {5,5,4,3,2,1};
+        int max = -1, secmax = -1;
+        for (int x : arr) {
+            if (x > max) {
+                secmax = max;
+                max = x;
             } 
-        }
-        int secMax = 0, secMaxIndex = -1;
-        for (int i=0; i<n; i++) {
-            if (arr[i] != max) {
-                secMax = Math.max(secMax, arr[i]);
-            }
-        }
-        for (int i=0; i<n; i++) {
-            if (arr[i] == secMax) {
-                secMaxIndex = i;
-                break;
-            }
-        }
-        System.out.println(maxIndex + " " + secMaxIndex);
+            else if (x > secmax && x != max)
+                secmax = x;
+        } 
+        System.out.println(max + " " + secmax);
     }
 }
 
 
-// more efficient approach if want to just find the value of first and second largest elements
+// more efficient approach
 
 import java.util.Scanner;
 public class MyClass {

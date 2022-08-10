@@ -1,6 +1,7 @@
 /*
 Number is sparse or not
 Given a number N. The task is to check whether it is sparse or not. A number is said to be a sparse number if no two or more consecutive bits are set in the binary representation.
+means two or more consecutive bits are 1. for eg. 12 -> 1100 -> yes, 72 -> 01001000 -> no
 
 Input
 First line contains a single integer N
@@ -50,3 +51,37 @@ public class G3_Number_is_sparse_or_not {
     input.close();
   }
 }
+
+
+// If we observer carefully, then we can notice that if we can use bitwise AND of binary representation of the “given number its “right shifted number”(i.e., half the given number) to figure out whether the number is sparse or not. Result of AND operator would be 0 if number is sparse and non-zero if not sparse.
+// JAVA Code to Check if a
+// given number is sparse or not
+
+import java.util.*;
+
+class GFG {
+	
+	// Return true if n is
+	// sparse,else false
+	static int checkSparse(int n)
+	{
+
+		// n is not sparse if there
+		// is set in AND of n and n/2
+		if ((n & (n>>1)) >=1)
+			return 0;
+	
+		return 1;
+	}
+	
+	// Driver code
+	public static void main(String[] args)
+	{
+		System.out.println(checkSparse(72)) ;
+		System.out.println(checkSparse(12)) ;
+		System.out.println(checkSparse(2)) ;
+		System.out.println(checkSparse(3)) ;
+	}
+}
+
+// 1 0 1 0

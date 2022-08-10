@@ -33,6 +33,10 @@ public class G2_trailing_zeroes_n! {
     while (n / (Math.pow(5, i)) > 0) {
       tzeros += n / (Math.pow(5, i++));
     }
+    /* OR
+    for (int i = 5; n / i >= 1; i *= 5)
+      count += n / i;
+    */
     System.out.println(tzeros);
   }
 }

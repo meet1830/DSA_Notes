@@ -1,7 +1,7 @@
 // program to print sum of first n numbers (n = 3 -> 1+2+3 = 6)
 
 // parameterized way -> printing ans
-/*
+
 public class MyClass {
     public static void sum (int n, int sum) {
         // base
@@ -16,7 +16,7 @@ public class MyClass {
         sum(n, sum);
     }
 }
-*/
+
 
 // functional way -> returning ans
 public class MyClass {
