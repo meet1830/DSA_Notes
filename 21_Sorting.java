@@ -85,6 +85,7 @@ public class P1_Sorting {
     // in merge sort the mergesort function is called recursively each time and hence the array is constantly partitoned till it has a single element left in it
     // then the merge function is called which then merges both the left and the right side and ensures that the array made using both the left and right partitons considered is sorted and finally the whole array is sorted after the last recursion call
     // tc -> O(nlogn + n) -> (mergeSort function + merge function) 
+    // tc -> O(nlogn), O(nlogn), O(nlogn)
     // sc -> O(n)
     public static void mergeSort (int[] arr, int l, int r) {
         if (l >= r) {
