@@ -26,10 +26,10 @@ s consists of lowercase and/or uppercase English letters only.
 
 class Solution {
     public int longestPalindrome(String s) {
-        // longest palindrome is the one consisting of all characters who have a even number of frequency in the string, number of frequencies - 1 for all characters having odd number of frequency, and all characters of frequency for any of any of odd number of frequency characters.
+        // longest palindrome consists of all characters whose frequencies are even and one character whose frequency is odd, to be in the middle
         // abccccdd
         // a-1, b-1, c-4, d-2
-        // longest palindrome length -> b-1, c-4, d-2 OR a-1, b-0, c-4, d-2
+        // longest palindrome length -> b-1, c-4, d-2 (dccbccd) OR a-1, b-0, c-4, d-2 (dccaccd)
         
         // calculating frequencies of characters of input string
         // using hashmap for frequency because case sensitive 

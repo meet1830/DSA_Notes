@@ -3,7 +3,7 @@
 
 Given a nearly sorted array such that each of its elements may be misplaced by no more than one position from the correct sorted order, efficiently search a given element in it and return its index.
 
-An element at index `i` in a correctly sorted order can be misplaced by the ±1 position, i.e., it can be present at index `i-1` or `i` or `i+1` in the input array.
+An element at index `i` in a correctly sorted order can be misplaced by the +-1 position, i.e., it can be present at index `i-1` or `i` or `i+1` in the input array.
 
 Input: nums[] = [2, 1, 3, 5, 4, 7, 6, 8, 9], target = 5
 Output: 3

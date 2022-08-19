@@ -36,6 +36,9 @@ Follow up: Could you do this in one pass?
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+// brute -> find out length of list, and then iterate again to the node before the node to be deleted and delete that node
+
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         // take two pointers or nodes. Iterate pointer n times making it point to the nth node and the other pointer still points to the first node. After that start iterating again and this time increment both pointers till second pointer points to the last element, making the first pointer pointing to the node to be deleted.
