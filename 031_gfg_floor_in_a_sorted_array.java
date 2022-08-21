@@ -57,8 +57,6 @@ class Solution{
 
 // for finding ceil same code as above with
 // following changes in while loop
-
-/*
 while (l <= r) {
   int mid = l + (r - l) / 2;
   if (arr[mid] == x) {
@@ -72,7 +70,8 @@ while (l <= r) {
     l = mid + 1;
   }
 }
-*/
+
+
 
 // APPROACH - FUNDAMENTAL AND SIMPLE
 // At the end of a binary search (if not terminated early), that is after terminating the loop due to violation of condition first pointer points to the ceil of target and second points to the floor. 

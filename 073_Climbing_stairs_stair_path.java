@@ -42,6 +42,39 @@ class Solution {
     }
 }
 
+
+
+
+// Recursive solution - similar to fibonacci
+class Solution {
+    public int climbStairs(int n) {
+        if(n <= 3) 
+            return n;
+        
+        return climbStairs(n - 1) + climbStairs(n - 2);
+    }
+}
+
+
+
+
+// similar to fibonacci iterative
+class Solution {
+    public int climbStairs(int n) {
+        int a = 1;
+        int b = 2;
+        for (int i = 2; i <= n; i++) {
+            int temp = b;
+            b = b + a;
+            a = temp;
+        }
+        
+        return a;
+    }
+}
+
+
+
 /*
 Print Stair Paths -> pepcoding -> https://nados.io/question/print-stair-paths?zen=true
 1. You are given a number n representing number of stairs in a staircase.
