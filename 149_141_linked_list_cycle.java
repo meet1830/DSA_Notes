@@ -32,31 +32,53 @@ Follow up: Can you solve it using O(1) (i.e. constant) memory?
 
 
 
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
+// brute -> take a value not from the range of node values and everytime traversing the node, change the node value to that value. if found that value again, then a loop exists.
+// O(n), O(1)
 
+// brute -> hashing
+// O(n), O(n)
 
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        ListNode slow = head, fast = head;
+        if (head == null)
+            return false;
         
-        while(fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        HashSet<ListNode> set = new HashSet<>();
+        ListNode a = head;
+        
+        while (a != null) {
+            if (set.contains(a))
+                return true;
+            else 
+                set.add(a);
             
-            if(slow == fast) return true;
+            a = a.next;
         }
         
         return false;
     }
 }
 
+
+
+// optimal -> floyd's loop detection algorithm -> hare and tortoise algo -> slow and fast pointers
+// O(n), O(1)
+public class Solution {
+    public boolean hasCycle(ListNode head) {     
+        if (head == null)
+            return false;
+        
+        ListNode slow = head, fast = head;
+        
+        // while (fast != null && fast.next ! null)
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            
+            if (slow == fast) 
+                return true;
+        }
+        
+        return false;
+    }
+}

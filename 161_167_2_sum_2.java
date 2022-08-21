@@ -34,24 +34,70 @@ The tests are generated such that there is exactly one solution.
 
 
 
+// brute -> two for loops
+
+// hashmap original solution for two sum will also work but the array is sorted so consider approach taking that into account
+
+// better approach -> take every element once and binary search for target - element
+// tc -> n*logn sc -> 1 
+
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int left = 0, right = numbers.length - 1;
-        int[] res = new int[2];
+        int[] ans = new int[2];
         
-        while(left <= right) {
-            int sum = numbers[left] + numbers[right];
-            if(sum == target) {
-                res[0] = left + 1;
-                res[1] = right + 1;
-                return res;
+        for (int i = 0; i < numbers.length; i++) {
+            int search = bSearch(target - numbers[i], numbers, i);
+            if(search != -1) {
+                ans[0] = i + 1;
+                ans[1] = search + 1;
+                
+                return ans;
             }
-            else if(sum < target) left++;
-            else right--;
         }
         
-        return res;
+        return ans;
+    }
+    
+    public int bSearch(int currTarget, int[] arr, int i) {
+        int l = 0, r = arr.length - 1;
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            
+            if(arr[mid] == currTarget && mid != i) 
+                return mid;
+            else if(arr[mid] > currTarget) 
+                r = mid - 1;
+            else 
+                l = mid + 1;
+        }
+        
+        return -1;
     }
 }
 
 
+
+// optimal -> two pointers
+// tc = n sc = 1
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int first = 0, last = numbers.length - 1;
+        int[] res = new int[2];
+        
+        while (first <= last) {
+            int sum = numbers[first] + numbers[last];
+            
+            if (sum == target)
+                break;
+            else if (sum < target) 
+                first++;
+            else 
+                last--;
+        }
+        
+        res[0] = first + 1;
+        res[1] = last + 1;
+        
+        return res;
+    } 
+}
