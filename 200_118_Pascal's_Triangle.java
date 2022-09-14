@@ -35,8 +35,10 @@ Constraints:
 3 variations in the question
     1. print rth and cth index of pascals triangle
             use formula (r - 1)C(c - 1)
+            formula nCr = n! / (r! * (n-r)!)
             tc -> O(n) sc -> O(1)
     2. print the rth row of the pascal triangle
+        nth row -> r-1_C_0, r-1_C_1, r-1_C_2 ... r-1_C_r-1
             use the same formula in smarter way 
             to optimize the formula 
             in above formula keep the number of terms in num same as den
@@ -46,7 +48,7 @@ Constraints:
             and calculating
             can do this with the snippet
             for(int i = 0; i < k; i++) {
-                res *= (n - i);
+                res *= (n - 1 - i);
                 res /= (i + 1);
             }
             tc -> O(N) sc -> O(n)
