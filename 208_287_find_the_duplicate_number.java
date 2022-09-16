@@ -39,24 +39,30 @@ hence can use linkedlist cycle method
 here cycle detection loop works as: first value x then next value at index x in the array. and for fast pointer, if value x then two times the same. 
 */
 
-// Binary search solution -> may not pass all test cases
+// Binary search solution
 class Solution {
     public int findDuplicate(int[] nums) {
-        int n=nums.length;
-        int left=1,right=n-1,c,mid;
-    
-        while(left<right)
-        {
-            mid=(left+right)/2;
-            c=0;
-
-            for(int i=0;i<n;i++)
-                if(nums[i]<=mid)c++;
-
-            if(c>mid)right=mid;
-            else left=mid+1;
+        Arrays.sort(arr);
+        
+        // applying bsearch
+        int n = arr.length;
+        int l = 1, r = n - 1;
+        while (l < r) {
+            // here input value from 1 to n
+            int mid = (l + (r - l) / 2);
+            
+            int c = 0;
+            for (int i = 0; i < n; i++) {
+                if (arr[i] <= mid) 
+                    c++;
+            }
+            
+            if (c > mid)
+                r = mid;
+            else 
+                l = mid + 1;
         }
-        return left;
+        return l;
     }
 }
 
