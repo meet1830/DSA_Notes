@@ -52,13 +52,22 @@ here also as per majority element 1 if count is 0 then we are changing elements
 
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        int n = nums.length, ele1 = 0, ele2 = 0, cnt1 = 0, cnt2 = 0;
+        int ele1 = -1, ele2 = -1;
+        int cnt1 = 0, cnt2 = 0;
+        
         for (int x : nums) {
-            if (cnt1 == 0) ele1 = x;
-            else if (cnt2 == 0) ele2 = x;
-            
-            if (x == ele1) cnt1++;
-            else if (x == ele2) cnt2++;
+            if (x == ele1)
+                cnt1++;
+            else if (x == ele2)
+                cnt2++;
+            else if (cnt1 == 0) {
+                ele1 = x;
+                cnt1 = 1;
+            }
+            else if (cnt2 == 0) {
+                ele2 = x;
+                cnt2 = 1;
+            }
             else {
                 cnt1--;
                 cnt2--;
@@ -66,14 +75,16 @@ class Solution {
         }
         
         cnt1 = 0; cnt2 = 0;
-        for (int x : nums) {
-            if (x == ele1) cnt1++;
-            else if (x == ele2) cnt2++;
+        for (int i : nums) {
+            if (i == ele1) cnt1++;
+            else if (i == ele2) cnt2++;
         }
         
-        ArrayList<Integer> ans = new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
+        int n = nums.length;
         if (cnt1 > n / 3) ans.add(ele1);
         if (cnt2 > n / 3) ans.add(ele2);
+        
         return ans;
     }
 }

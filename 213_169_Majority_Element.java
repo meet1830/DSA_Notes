@@ -37,19 +37,14 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
 
 class Solution {
     public int majorityElement(int[] nums) {
-        int count = 0;
-        int element = 0;
-        
+        int ele = 0, c = 0;
         for (int x : nums) {
-            if (count == 0)
-                element = x;
-
-            if (element == x)
-                count++;
-            else 
-                count--;
+            if (ele == x) 
+                c++;
+            else if (c == 0) 
+                ele = x;
+            else c--;
         }
-    
-        return element;
+        return ele;
     }
 }
