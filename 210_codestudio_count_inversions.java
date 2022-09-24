@@ -49,52 +49,36 @@ import java.io.*;
 // brute -> use two for loops and count the number of inversions
 // optimal -> use merge sort to count inversions while comparing elements. both the arrays are sorted while merging. hence if an element in left subarray is bigger then have to count all the elements of that subarray as both arrays are sorted and it will form an inversion pair. 
 
+import java.util.* ;
+import java.io.*; 
 public class Solution {
-    public static long merge(long[] arr, int l, int r, int m) {
+    private static long merge(long[] arr, int l, int m, int r) {
+        int i = l, j = m + 1, k = 0;
         long count = 0;
-        int sizeL = m - l + 1;
-        int sizeR = r - m;
-        long[] left = new long[sizeL];
-        long[] right = new long[sizeR];
-        
-        for (int i = 0; i < sizeL; i++) 
-            left[i] = arr[l + i];
-        
-        for (int i = 0; i < sizeR; i++)
-            right[i] = arr[m + 1 + i];
-        
-        int i = 0, j = 0, k = l;
-        while (i < sizeL && j < sizeR) {
-            if (left[i] <= right[j])
-                arr[k++] = left[i++];
-            
+        long[] merged = new long[r - l + 1];
+        while (i <= m && j <= r) {
+            if (arr[i] <= arr[j]) merged[k++] = arr[i++];
             else {
-                arr[k++] = right[j++];
-                count += (m - i);
+                merged[k++] = arr[j++];
+                count += (m - i + 1);
             }
         }
-        
-        while (i < sizeL) 
-            arr[k++] = left[i++];
-        
-        while (j < sizeR) 
-            arr[k++] = right[j++];
+        while (i <= m) merged[k++] = arr[i++];
+        while (j <= r) merged[k++] = arr[j++];
+        for (i = l, k = 0; k < merged.length; i++, k++) 
+            arr[i] = merged[k];
         
         return count;
     }
-    public static long mergeSort(long[] arr, int l, int r) {
+    private static long mergeSort(long[] arr, int l, int r) {
+        if (l >= r) return 0;
         long count = 0;
-        if (l < r) {
-            int mid = l + (r - l) / 2;
-            count += mergeSort(arr, l, mid);
-            count += mergeSort(arr, mid + 1, r);
-            count += merge(arr, l, r, mid);
-        }
-        return count;
+        int mid = l + (r - l) / 2;
+        count = mergeSort(arr, l, mid);
+        count += mergeSort(arr, mid + 1, r);
+        return count += merge(arr, l, mid, r);
     }
     public static long getInversions(long arr[], int n) {
-        long[] copy = arr;
-        long count = mergeSort(copy, 0, n - 1);
-        return count;
+        return mergeSort(arr, 0, n - 1);
     }
 }
