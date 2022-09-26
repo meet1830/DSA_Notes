@@ -74,6 +74,8 @@ class GfG {
 
 // optimal use hashing put k = 0 in longest subarray with sum k
 
+// one subarray till index i is equal to sum x. other subarray bigger than this subarray has the same sum. then it can be concluded that the elements between both the subarray will be of sum 0. 
+
 class GfG {
     int maxLen(int arr[], int n) {
         HashMap<Integer, Integer> map = new HashMap<>();
