@@ -60,6 +60,24 @@ Follow up: Can you come up with an algorithm that runs in O(m + n) time?
 
 
 class Solution {
+    // O(m) * nlogn + O(n), O(1)
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        for (int i = 0; i < m; i++) {
+            if (nums1[i] > nums2[0]) {
+                int temp = nums1[i];
+                nums1[i] = nums2[0];
+                nums2[0] = temp;
+                Arrays.sort(nums2);
+            }
+        }
+        for (int i = m; i < m + n; i++) {
+            nums1[i] = nums2[i - m];
+        }
+    }
+}
+
+
+class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         // putting nums2[] elements in nums1[]
         for(int i = m; i < (m + n); i++) {
