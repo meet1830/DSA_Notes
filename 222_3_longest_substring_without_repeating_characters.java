@@ -24,6 +24,7 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 */
 
+// remove elements till the curr ele and not the whole data structure
 
 class Solution {
     public int lengthOfLongestSubstring(String s) {
