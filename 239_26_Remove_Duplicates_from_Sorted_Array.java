@@ -103,3 +103,18 @@ class Solution {
         return i + 1;
     }
 }
+
+
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int p = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int val = nums[i];
+            while (i + 1 < nums.length && nums[i] == nums[i + 1])
+                i++;
+            nums[p++] = val;
+        }
+        return p;
+    }
+}
