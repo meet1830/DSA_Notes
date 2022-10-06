@@ -64,30 +64,38 @@ class Job {
 // here approach will be conduct the job first whose deadline is nearest and in the order of max profit (if deadline is same)
 // traversing through arr and scheduling work in sq array at the same index as deadline
 
+
+// O(nlogn + n * m), O(m) -> m = (size of jobSeq array)
 class Solution
 {
+    //Function to find the maximum profit and the number of jobs done.
     int[] JobScheduling(Job arr[], int n)
     {
+        // sorting based on max profit
         Arrays.sort(arr, (a, b) -> b.profit - a.profit);
         
-        int maxLen = 0;
-        for (int i = 0; i < n; i++) 
-            maxLen = Math.max(maxLen, arr[i].deadline);
-            
-        int[] seq = new int[maxLen + 1];
-        int countJobs = 0, maxProfit = 0;
+        // finding max deadline
+        int maxDeadline = 0;
+        for (int i = 0; i < n; i++) {
+            maxDeadline = Math.max(maxDeadline, arr[i].deadline);
+        }
         
+        // creating an array of size of max deadline + 1 as deadline cannot be 0 so no job sequencing at 0th index
+        // performing the task on the last day of the deadline hence prev days are left to complete other tasks
+        int[] jobSeq = new int[maxDeadline + 1];
+        
+        // traversing to the sorted array and performing the job of max profit at the last day of its deadline
+        // if that day is occupied, then perform the job on any of its prev days which are empty (in jobseq array)
+        int maxProfit = 0, countJobs = 0;
         for (int i = 0; i < n; i++) {
             for (int j = arr[i].deadline; j > 0; j--) {
-                if (seq[j] == 0) {
-                    // seq[j] = i + 1;
-                    seq[j] = arr[i].id;
-                    
-                    countJobs++;
+                if (jobSeq[j] == 0) {
+                    jobSeq[j] = arr[i].id;
                     maxProfit += arr[i].profit;
+                    countJobs++;
                     break;
                 }
-            }
+            } 
         }
         
         return new int[] {countJobs, maxProfit};
