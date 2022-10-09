@@ -1,40 +1,70 @@
-public class Queue {
-  int front = -1;
-  int rear = -1;
+class Queue {
+  int front = 0, rear = 0, count = 0, n;
   int[] arr;
-  int count = 0;
 
   Queue(int length) {
     arr = new int[length];
+    n = length;
   }
 
-  void enqueue(int value) {
-    if(count == arr.length) {
-      System.out.println("Queue Overflow!");
+  // enqueue
+  void push(int val) {
+    if (count == n) {
+      System.out.println("Queue Overflow error");
       return;
     }
-    // first element entering queue
-    if(front == -1) {
-      front++;
-    }
-    rear = (rear + 1) % arr.length;
-    arr[rear] = value;
+    arr[rear % n] = val;
+    rear++;
     count++;
   }
 
-  int dequeue() {
-    if(count == 0) {
-      System.out.println("Queue Underflow!");
+  // dequeue
+  int pop() {
+    if (count == 0) {
+      System.out.println("Queue Underflow error");
       return Integer.MIN_VALUE;
     }
-    int x = arr[front];
-    front = (front + 1) % arr.length;
+    int returnVal = arr[front % n];
+    front++;
     count--;
-    // when queue becomes empty
-    if(count == 0) {
-      front = -1;
-      rear = -1;
+    return returnVal;
+  }
+
+  int peek() {
+    if (count == 0) {
+      System.out.println("Queue Underflow error");
+      return Integer.MIN_VALUE;
     }
-    return x;
+    return arr[front % n];
+  }
+
+  void printQueue() {
+    for (int i = front; i < rear; i++) {
+      System.out.print(arr[i % n] + " ");
+    }
+    System.out.println();
   }
 }
+
+public class Main {
+  public static void main(String[] args) {
+    Queue q = new Queue(5);
+    q.pop();
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    System.out.println(q.pop());
+    System.out.println(q.peek());
+    q.push(4);
+    q.push(5);
+    q.push(6);
+    q.push(7);
+    q.printQueue();
+  }
+}
+
+/* Queue Underflow error
+1
+2
+Queue Overflow error
+2 3 4 5 6 */
