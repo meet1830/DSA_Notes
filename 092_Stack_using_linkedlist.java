@@ -21,7 +21,7 @@ class Stack {
     return list.head == null;
   }
   
-  // isFull does apply for linked list
+  // linked list is not of defined size hence isFull does not apply here
   
   void push(int value) {
     list.insertFirst(value);
