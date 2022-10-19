@@ -134,3 +134,25 @@ class Solution {
       }    
   }
 }
+
+
+
+class Solution {
+    private void findComb(int[] arr, int target, int idx, List<Integer> list, List<List<Integer>> ans) {
+        if (target < 0) return;
+        if (target == 0) {
+            ans.add(new ArrayList<>(list));
+        }
+        for (int i = idx; i < arr.length; i++) {
+            list.add(arr[i]);
+            findComb(arr, target - arr[i], i, list, ans);
+            list.remove(list.size() - 1);
+        }
+    }
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        List<List<Integer>> ans = new ArrayList<>();
+        findComb(candidates, target, 0, new ArrayList<>(), ans);
+        return ans; 
+    }
+}
