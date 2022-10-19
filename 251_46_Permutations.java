@@ -97,7 +97,7 @@ class Solution {
             for(int x : nums) 
                 list.add(x);
             
-            ans.add(new ArrayList<>(list));
+            ans.add(list);
             
             return;
         }
