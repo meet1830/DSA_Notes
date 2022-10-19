@@ -99,6 +99,23 @@ class Solution {
 }
 
 
+class Solution {
+  private void findSub(ArrayList<Integer> arr, int idx, int sum, ArrayList<Integer> ans) {
+    ans.add(sum);
+    for (int i = idx; i < arr.size(); i++) {
+      sum += arr.get(i);
+      findSub(arr, i + 1, sum, ans);
+      sum -= arr.get(i);
+    }
+  }
+  ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
+    ArrayList<Integer> ans = new ArrayList<>();
+    findSub(arr, 0, 0, ans);
+    return ans;
+  }
+}
+
+
 
 /*
 Target Sum Subsets
