@@ -85,6 +85,8 @@ class Solution {
 
 
 // optimal 
+// O(n^2 -> n for loop and other n for removing number from numbers arraylist)
+// O(n) -> size of numbers
 class Solution {
     public String getPermutation(int n, int k) {
         int fact = 1;
