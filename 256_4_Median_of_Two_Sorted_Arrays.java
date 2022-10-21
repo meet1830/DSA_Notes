@@ -155,3 +155,52 @@ class Solution {
     }
     
 }
+
+
+
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        // edge case -> take smaller array first
+        if (nums1.length > nums2.length) {
+            int[] temp = nums1;
+            nums1 = nums2;
+            nums2 = temp;
+        }
+        
+        int l = 0, r = nums1.length, te = nums1.length + nums2.length;
+        // not nums1.length - 1;
+        
+        while (l <= r) {
+            int aleft = l + (r - l) / 2;
+            int bleft = (te + 1) / 2 - aleft;
+            // if te odd then left part of more size then right part
+            
+            // edge cases
+            int alm1 = (aleft == 0) ? Integer.MIN_VALUE : nums1[aleft - 1];
+            int al = (aleft == nums1.length) ? Integer.MAX_VALUE : nums1[aleft];
+            int blm1 = (bleft == 0) ? Integer.MIN_VALUE : nums2[bleft - 1];
+            int bl = (bleft == nums2.length) ? Integer.MAX_VALUE : nums2[bleft];
+            
+            // check partition condition
+            if (alm1 <= bl && blm1 <= al) {
+                double median = 0.0;
+                if (te % 2 == 0) {
+                    int lmax = Math.max(alm1, blm1);
+                    int rmin = Math.min(al, bl);
+                    median = (lmax + rmin) / 2.0;
+                } else {
+                    int lmax = Math.max(alm1, blm1);
+                    median = lmax;
+                }
+                return median;
+            }
+            else if (alm1 > bl) {
+                r = aleft - 1;
+            } else {
+                l = aleft + 1;
+            }
+        }
+        
+        return (double)0;
+    }
+}
