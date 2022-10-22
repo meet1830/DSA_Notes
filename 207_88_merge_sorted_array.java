@@ -77,6 +77,7 @@ class Solution {
 }
 
 
+// O(m + n), O(1)
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         // putting nums2[] elements in nums1[]
