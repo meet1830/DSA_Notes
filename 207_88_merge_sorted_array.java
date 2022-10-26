@@ -112,3 +112,41 @@ class Solution {
         }
     }
 }
+
+
+// gap algo when two arrays of size m and n respectively are given and have to be sorted distinctly, means sorted exchanging elements within the two arrays such that when both the arrays are placed side by side, the elements are sorted
+// for eg => a1 = {1, 4, 5, 6, 10}, a2 = {2, 3, 9}
+// ans => a1 = {1, 2, 3, 4, 5}, a2 = {6, 9, 10}
+
+import java.util.*;
+public class Main {
+    public static void swap(int[] a1, int[] a2, int i, int j) {
+        int temp = a1[i];
+        a1[i] = a2[j];
+        a2[j] = temp;
+    }
+    public static void mergeTwoSortedArrays(int[] a1, int[] a2) {
+        int m = a1.length, n = a2.length;
+        int gap = ((m + n) / 2) + ((m + n) % 2);
+        // int gap =(int) Math.ceil((double)(n + m) / 2.0);
+        while (gap > 0) {
+            int start = 0, end = gap;
+            while (end < (m + n)) {
+                if (end < m && a1[start] > a1[end]) swap(a1, a1, start, end);
+                else if (end >= m && start < m && a1[start] > a2[end - m]) swap(a1, a2, start, end - m);
+                else if (end >= m && start >= m && a2[start - m] > a2[end - m]) swap(a2, a2, start - m, end - m);
+                start++; end++;
+            }
+            if (gap == 1) break;
+            gap = (gap / 2) + (gap % 2);
+            // gap =(int) Math.ceil((double) gap / 2.0);
+        }
+    }
+    public static void main(String[] args) {
+        int[] a1 = {1, 4, 5, 6, 10}, a2 = {2, 3, 9};
+        mergeTwoSortedArrays(a1, a2);
+        for (int x : a1) System.out.print(x + " ");
+        System.out.println();
+        for (int x : a2) System.out.print(x + " ");
+    }
+}
