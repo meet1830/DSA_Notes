@@ -186,3 +186,39 @@ public class Solution {
         return -1;
     }
 }
+
+
+
+// optimal -> binary search -> creating partitions of size k
+// O(min(n, m)), O(1)
+class Solution {
+    public long kthElement( int arr1[], int arr2[], int n, int m, int k) {
+        if (n > m) 
+            return kthElement(arr2, arr1, m, n, k);
+            
+        // edge cases, eg. n = 4, m = 6
+        // if k = 7, then r = 4 but l != 0, it is k - n = 3
+        // if k = 3, then l = 0 but r != 4 it is 3
+        int l = Math.max(0, k - m), r = Math.min(k, n);
+        
+        while (l <= r) {
+            int aleft = l + (r - l) / 2;
+            int bleft = k - aleft;
+            
+            int a1 = aleft == 0 ? Integer.MIN_VALUE : arr1[aleft - 1];
+            int a2 = aleft == n ? Integer.MAX_VALUE : arr1[aleft];
+            int b1 = bleft == 0 ? Integer.MIN_VALUE : arr2[bleft - 1];
+            int b2 = bleft == m ? Integer.MAX_VALUE : arr2[bleft];
+            
+            if (a1 <= b2 && b1 <= a2) {
+                return Math.max(a1, b1);
+            } else if (a1 > b2) {
+                r = aleft - 1;
+            } else if (b1 > a2) {
+                l = aleft + 1;
+            }
+        }
+        
+        return -1;
+    }
+}
