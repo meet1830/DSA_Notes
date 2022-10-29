@@ -42,31 +42,25 @@ Constraints:
 class Solution
 {
     //Function to find the next greater element for each element of the array.
-    public static long[] nextLargerElement(long[] input, int n)
-    {
+    public static long[] nextLargerElement(long[] arr, int n)
+    { 
         long[] output = new long[n];
         Stack<Long> st = new Stack<>();
     
         output[n - 1] = -1;
-        st.push(input[n - 1]);
+        st.push(arr[n - 1]);
     
         for(int i = n - 2; i >= 0; i--) {
-            while(!st.isEmpty() && st.peek() < input[i]) {
+            while(!st.isEmpty() && st.peek() <= arr[i]) {
                 st.pop();
             }
-            if(st.isEmpty()) {
-                output[i] = -1;
-                st.push(input[i]);
-            }
-            else {
-                output[i] = st.peek();
-                st.push(input[i]);
-            }
+            output[i] = st.isEmpty() ? -1 : st.peek();
+            st.push(arr[i]);
         }
         return output;
+        
     } 
 }
-
 
 
 
