@@ -82,42 +82,41 @@ class Solution {
 }
 
 
-
-// quick select algo
-// avg case tc -> O(n), worst case -> O(n^2), sc -> O(1)
+// Quick Select Algo - similar to quick sort just reducing the sorting space each time.This brings down tc to on avg O(n)
+// average tc - O(n), worst - O(N^2), sc - O(1)
 class Solution {
-    public void swap(int[] arr, int x, int y) {
-        int temp = arr[x];
-        arr[x] = arr[y];
-        arr[y] = temp;
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
-    public int partition (int[] arr, int l, int r) {
-        int pivot = arr[r];
+    private int partition(int[] nums, int l, int r) {
+        int pivot = nums[r];
         int i = l - 1;
-
         for (int j = l; j < r; j++) {
-            if (arr[j] < pivot) {
+            if (nums[j] < pivot) {
                 i++;
-                swap(arr, i, j);
+                swap(nums, j, i);
             }
         }
-
-        // to get the pivot element to correct index
-        swap(arr, i + 1, r);
+        // bring pivot to the correct index
+        swap(nums, i + 1, r);
         return i + 1;
     }
-    public int quickSelect(int[] arr, int k, int lo, int hi) {
-        int p = partition(arr, lo, hi);
+    private int quickSelect(int[] nums, int k, int l, int r) {
+        int p = partition(nums, l, r);
         
-        if (p == k - 1)
-            return arr[p];
-        else if (p < k - 1)
-            return quickSelect(arr, k, p + 1, hi);
+        if (p == k - 1) return nums[p];
+        else if (p < k - 1) 
+            // move on the right side since p is to reach kth element
+            return quickSelect(nums, k, p + 1, r);
         else 
-            return quickSelect(arr, k, lo, p - 1);
+            // move to left since p is ahead of k
+            return quickSelect(nums, k, l, p - 1);
     }
     public int findKthLargest(int[] nums, int k) {
-        int newK = nums.length- k + 1;
-        return quickSelect(nums, newK, 0, nums.length - 1);
+        // since largest asked and not smallest
+        k = nums.length - k + 1;
+        return quickSelect(nums, k, 0, nums.length - 1);
     }
 }
