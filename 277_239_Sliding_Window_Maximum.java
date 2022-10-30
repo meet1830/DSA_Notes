@@ -54,13 +54,13 @@ class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
         int[] ans = new int[n - k + 1];
+        Deque<Integer> dq = new ArrayDeque<>();z
         int p = 0;
-        Deque<Integer> dq = new ArrayDeque<>();
         
         for (int i = 0; i < n; i++) {
             // remove out of bound elements first
             // every element is added once in deque and removed from it afterwards, hence can check out of bound from index
-            while (!dq.isEmpty() && dq.peek() == i - k)
+            while (!dq.isEmpty() && dq.peekFirst() <= i - k) 
                 dq.pollFirst();
             
             // remove elements which are less then the current element for max
@@ -71,8 +71,8 @@ class Solution {
             dq.offer(i);
             
             // add first time when subarray size becomes equal to k and then add at every iteration
-            if (i - k + 1 >= 0)
-                ans[p++] = nums[dq.peek()];
+            if (i + 1 >= k)
+                ans[p++] = nums[dq.peekFirst()];
         }
         
         return ans;
