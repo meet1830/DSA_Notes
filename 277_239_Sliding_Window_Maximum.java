@@ -47,6 +47,7 @@ class Solution {
 
 
 // optimal -> using deque the peek of it will always contain the maximum element for that subarray, since we will be checking and removing the elements that are less than
+// in deque should always maintain a decreasing order of values
 // O(n + n), O(k)
 // after completion, all elements are added and removed once from deque hence 2n
 // deque size never goes more than k
@@ -68,7 +69,7 @@ class Solution {
             while (!dq.isEmpty() && nums[dq.peekLast()] < nums[i])
                 dq.pollLast();
             
-            dq.offer(i);
+            dq.addLast(i);
             
             // add first time when subarray size becomes equal to k and then add at every iteration
             if (i + 1 >= k)
