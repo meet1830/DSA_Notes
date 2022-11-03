@@ -86,7 +86,7 @@ public class Solution {
 
 
 // optimal -> slow and fast pointers -> after the slow and fast pointers have collided, use a dummy node at head and move it and slow pointer together. where they both collide is the starting node. if fast reaches null, return null
-
+// O(N), O(1)
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         if (head == null || head.next == null)
