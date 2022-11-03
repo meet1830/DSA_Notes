@@ -84,6 +84,7 @@ class Node
 
 // if every vertical list is treated as individual list, then the question becomes merge n sorted linked lists, similar to merge 2 sorted linked lists
 // so same as question merge 2 sorted linked lists, we merge two of the lists, make them as a single list and return its head, and call recursion and merge the returned list to another list
+// O(n), O(1)
 class GfG
 {
     Node mergeTwoLists(Node a, Node b) {
