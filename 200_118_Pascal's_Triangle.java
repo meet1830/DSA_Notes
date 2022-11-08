@@ -83,3 +83,57 @@ class Solution {
         return res;
     }
 }
+
+
+// PRINT KTH ROW OF A PASCALS TRIANGLE
+
+// Approach 1
+// O(n), O(n)
+// binomial function runs overall n times
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        int n = 4;
+        ArrayList<Integer> ans = new ArrayList<>();
+        for (int r = 0; r <= n; r++) {
+            ans.add(binomial(n, r));
+        }
+        for (int x : ans) System.out.print(x + " ");
+        System.out.println();
+    }
+    private static int binomial(int n, int r) {
+        if (r == 0 || r == n) return 1;
+        if (r > n - r) r = n - r;
+        int ans = 1;
+        for (int i = 0; i < r; i++) {
+            ans *= n - i;
+            ans /= i + 1;
+        }
+        return ans;
+    }
+}
+// 1 4 6 4 1
+
+// Approach 2
+// using the property nCr = (nCr-1 * (n - r + 1)) / r
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        int n = 4;
+        ArrayList<Integer> ans = kthRow(n);
+        for (int x : ans) System.out.print(x + " ");
+        System.out.println();
+    }
+    private static ArrayList<Integer> kthRow(int n) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        int prev = 1;
+        ans.add(prev);
+        for (int r = 1; r <= n; r++) {
+            int curr = (prev * (n - r + 1)) / r;
+            ans.add(curr);
+            prev = curr;
+        }
+        return ans;
+    }
+}
+// 1 4 6 4 1
