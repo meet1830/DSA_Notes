@@ -44,3 +44,27 @@ class Solution {
 }
 
 
+
+// ma stores max product, mi stores min product
+// if curr ele is neg, then if multiplied with ma will result in min value till now and similarly if multiplied with mi will result in max product till now. 
+// Hence swap them beforehand so that ma stores max product and mi stores min product.
+// in eg 1 till -2, ma = 6 and mi = 2
+// 6*-2=-12 and 2*-2=-4, hence ma < mi
+// if swapped before then ma = -4, mi = -12
+// O(n), O(1)
+class Solution {
+    public int maxProduct(int[] nums) {
+        int ans = nums[0], ma = ans, mi = ans;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < 0) {
+                int temp = ma;
+                ma = mi;
+                mi = temp;
+            }
+            ma = Math.max(nums[i], nums[i] * ma);
+            mi = Math.min(nums[i], nums[i] * mi);
+            ans = Math.max(ans, ma);
+        } 
+        return ans;
+    }
+}
