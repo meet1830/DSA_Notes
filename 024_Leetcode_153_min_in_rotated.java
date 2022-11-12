@@ -63,3 +63,28 @@ class Solution {
 // constraint in the problem -> to assume anti-clockwise rotation
 
 // approach -> find minimum. Its index will be the no of rotations.
+
+
+
+// array in two parts, one part sorted other not sorted. for all elements its prev element will be less than it and next element more than it. for min element though, its prev element will be more than it. if curr ele is largest then going prev will give wrong ans. hence need to compare both sides
+// compare both sides of mid, if mid - 1 is more, hence mid is min element, if mid + 1 is less then mid + 1 is min element
+// O(logn), O(1)
+class Solution {
+    public int findMin(int[] nums) {
+        int l = 0, r = nums.length - 1;
+        
+        // if completely sorted
+        if (nums[l] <= nums[r]) return nums[l];
+        
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            // if array is rotated, them mid + 1 will always exist, hence check mid + 1 condition first to avoid out of bound error
+            if (nums[mid] > nums[mid + 1]) return nums[mid + 1];
+            else if (nums[mid] < nums[mid - 1]) return nums[mid - 1];
+            else if (nums[mid] < nums[r]) r = mid - 1;
+            else l = mid + 1;
+        }
+        
+        return -1;
+    }
+}
