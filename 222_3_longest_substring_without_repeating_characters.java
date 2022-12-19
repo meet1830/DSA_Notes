@@ -28,27 +28,19 @@ s consists of English letters, digits, symbols and spaces.
 
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if(s.length() <= 1) return s.length();
-        
         HashSet<Character> set = new HashSet<>();
-        int start = 0, end = 0, maxLength = 0;
-        
-        while(start < s.length() && end < s.length()) {
-            if(set.contains(s.charAt(end))) {
-                while(set.contains(s.charAt(end))) {
-                    set.remove(s.charAt(start));
-                    start++;
-                }
+        int p = 0;
+        int maxLen = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            while (set.contains(c)) {
+                set.remove(s.charAt(p));
+                p++;
             }
-            else {
-                set.add(s.charAt(end));
-                end++;
-            }
-            
-            maxLength = Math.max(maxLength, end - start);
+            set.add(c);
+            maxLen = Math.max(maxLen, set.size());
         }
-        
-        return maxLength;
+        return maxLen;
     }
 }
 
