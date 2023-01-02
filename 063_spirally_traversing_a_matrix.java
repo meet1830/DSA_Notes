@@ -98,3 +98,50 @@ public class Main {
     spiralMat(mat, r, c);
   }
 }
+
+
+
+// traverse counter clockwise
+// for eg 
+/*
+4 4
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16
+
+1, 5, 9, 13, 14, 15, 16, 12, 8, 4, 3, 2, 6, 10, 11, 7
+*/
+
+public class Main {
+    public static void main(String args[]) {
+        int[][] mat = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        printCounterClockwise(mat, 4, 4);
+    }
+    private static void printCounterClockwise(int[][] mat, int m, int n) {
+        int k = 0, l = 0, r = m, c = n;
+    
+        while (k < r && l < c)
+        {
+            for (int i = k; i < r; i++)
+                System.out.print(mat[i][l] + " ");
+            l ++ ;
+
+            for (int i = l; i < c; i++)
+                System.out.print(mat[r - 1][i] + " ");
+            r-- ;
+
+            if (c > l) {
+                for (int i = r - 1; i >= k; i--)
+                    System.out.print(mat[i][c - 1] + " ");
+                c-- ;
+            }
+
+            if (r > k) {
+                for (int i = c - 1; i >= l; i--)
+                    System.out.print(mat[k][i] + " ");
+                k++;
+            }
+        }
+    }
+}
