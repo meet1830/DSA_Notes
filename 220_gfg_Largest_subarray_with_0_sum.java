@@ -100,3 +100,25 @@ class GfG {
         return maxLen;
     }
 }
+
+
+/* Javascript code
+const arr = [15,-2,2,-8,1,7,10,23];
+let sum = 0, maxLen = 0;
+
+const map = new Map();
+
+for (let i in arr) {
+    sum += arr[i];
+    
+    if (sum === 0) maxLen = i + 1;
+    
+    else if (map.get(sum) !== undefined || map.has(sum)) {
+        maxLen = Math.max(maxLen, i - map.get(sum));
+    }
+    
+    else map.set(sum, i);
+}
+
+console.log(maxLen);
+*/
